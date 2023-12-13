@@ -193,6 +193,7 @@ return [
 
     'additional_js' => [
         //'js/custom.js',
+        'js/account_data_edit.js',
     ],
 
     'googlemaps' => [

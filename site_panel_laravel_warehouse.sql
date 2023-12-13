@@ -62,7 +62,14 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (32,	5,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{}',	5),
 (33,	5,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.url_browse\"}',	6),
 (34,	5,	'account',	'text',	'Аккаунт',	0,	1,	1,	1,	1,	1,	'{}',	7),
-(35,	5,	'paid_to',	'date',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	8);
+(35,	5,	'paid_to',	'date',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	8),
+(36,	6,	'id',	'text',	'Id',	1,	0,	0,	0,	0,	0,	'{}',	1),
+(37,	6,	'created_at',	'timestamp',	'Создано',	0,	0,	1,	1,	0,	1,	'{}',	2),
+(38,	6,	'updated_at',	'timestamp',	'Обновлено',	0,	0,	0,	0,	0,	0,	'{}',	3),
+(39,	6,	'title',	'text',	'Название',	1,	1,	1,	1,	1,	1,	'{}',	5),
+(40,	6,	'type',	'select_dropdown',	'Тип',	1,	1,	1,	1,	1,	1,	'{\"options\":{\"li\":\"LiveInternet\",\"yandex_xml\":\"Yandex XML\",\"yandex_metrika\":\"Yandex Metrika\",\"yandex_webmaster\":\"Yandex Webmaster\",\"google_analytics\":\"Google Analytics\"}}',	4),
+(41,	6,	'account_data',	'text',	'Данные аккаунта',	0,	1,	1,	1,	1,	1,	'{\"view_add\":\"formfields.account_data_edit\",\"view_edit\":\"formfields.account_data_edit\",\"view_browse\":\"formfields.account_data_browse\"}',	6),
+(42,	6,	'order',	'number',	'Порядок',	0,	1,	1,	1,	1,	1,	'{}',	7);
 
 DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE `data_types` (
@@ -91,7 +98,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2,	'menus',	'menus',	'Menu',	'Menus',	'voyager-list',	'TCG\\Voyager\\Models\\Menu',	NULL,	'',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (3,	'roles',	'roles',	'Role',	'Roles',	'voyager-lock',	'TCG\\Voyager\\Models\\Role',	NULL,	'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (4,	'registrars',	'registrars',	'Регистратор',	'Регистраторы',	NULL,	'App\\Models\\Registrar',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:13:15',	'2023-12-13 03:14:47'),
-(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:35:03');
+(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:35:03'),
+(6,	'accounts',	'accounts',	'Account',	'Accounts',	NULL,	'App\\Models\\Account',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":\"order\",\"order_display_column\":\"order\",\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:45:13',	'2023-12-13 03:45:47');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -177,7 +185,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (2,	1,	'Медиа',	'',	'_self',	'voyager-images',	'#000000',	5,	7,	'2023-12-12 16:25:10',	'2023-12-13 03:28:27',	'voyager.media.index',	'null'),
 (3,	1,	'Пользователи',	'',	'_self',	'voyager-person',	'#000000',	5,	1,	'2023-12-12 16:25:10',	'2023-12-13 03:28:05',	'voyager.users.index',	'null'),
 (4,	1,	'Роли',	'',	'_self',	'voyager-lock',	'#000000',	5,	2,	'2023-12-12 16:25:10',	'2023-12-13 03:28:15',	'voyager.roles.index',	'null'),
-(5,	1,	'Инструменты',	'',	'_self',	'voyager-tools',	'#000000',	NULL,	4,	'2023-12-12 16:25:10',	'2023-12-13 03:27:48',	NULL,	''),
+(5,	1,	'Инструменты',	'',	'_self',	'voyager-tools',	'#000000',	NULL,	5,	'2023-12-12 16:25:10',	'2023-12-13 03:58:59',	NULL,	''),
 (6,	1,	'Меню',	'',	'_self',	'voyager-list',	'#000000',	5,	3,	'2023-12-12 16:25:10',	'2023-12-13 03:28:38',	'voyager.menus.index',	'null'),
 (7,	1,	'БД',	'',	'_self',	'voyager-data',	'#000000',	5,	4,	'2023-12-12 16:25:10',	'2023-12-13 03:28:52',	'voyager.database.index',	'null'),
 (8,	1,	'Compass',	'',	'_self',	'voyager-compass',	NULL,	5,	5,	'2023-12-12 16:25:10',	'2023-12-13 03:25:46',	'voyager.compass.index',	NULL),
@@ -185,7 +193,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (10,	1,	'Настройки',	'',	'_self',	'voyager-settings',	'#000000',	5,	8,	'2023-12-12 16:25:10',	'2023-12-13 03:29:05',	'voyager.settings.index',	'null'),
 (11,	1,	'Регистраторы',	'',	'_self',	NULL,	'#000000',	NULL,	2,	'2023-12-13 03:13:15',	'2023-12-13 03:27:10',	'voyager.registrars.index',	'null'),
 (12,	1,	'Хостинги',	'',	'_self',	NULL,	'#000000',	NULL,	3,	'2023-12-13 03:16:07',	'2023-12-13 03:27:28',	'voyager.hostings.index',	'null'),
-(13,	1,	'Переводы',	'/translations',	'_blank',	'voyager-lightbulb',	'#000000',	5,	9,	'2023-12-13 03:29:37',	'2023-12-13 03:29:43',	NULL,	'');
+(13,	1,	'Переводы',	'/translations',	'_blank',	'voyager-lightbulb',	'#000000',	5,	9,	'2023-12-13 03:29:37',	'2023-12-13 03:29:43',	NULL,	''),
+(14,	1,	'Аккаунты',	'',	'_self',	NULL,	'#000000',	NULL,	4,	'2023-12-13 03:45:13',	'2023-12-13 03:59:29',	'voyager.accounts.index',	'null');
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -222,7 +231,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24,	'2019_12_14_000001_create_personal_access_tokens_table',	1),
 (25,	'2014_04_02_193005_create_translations_table',	2),
 (26,	'2023_12_13_055709_create_registrars_table',	3),
-(27,	'2023_12_13_060005_create_hostings_table',	4);
+(27,	'2023_12_13_060005_create_hostings_table',	4),
+(28,	'2023_12_13_063941_create_accounts_table',	5);
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -279,7 +289,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (32,	'read_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
 (33,	'edit_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
 (34,	'add_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
-(35,	'delete_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07');
+(35,	'delete_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
+(36,	'browse_accounts',	'accounts',	'2023-12-13 03:45:13',	'2023-12-13 03:45:13'),
+(37,	'read_accounts',	'accounts',	'2023-12-13 03:45:13',	'2023-12-13 03:45:13'),
+(38,	'edit_accounts',	'accounts',	'2023-12-13 03:45:13',	'2023-12-13 03:45:13'),
+(39,	'add_accounts',	'accounts',	'2023-12-13 03:45:13',	'2023-12-13 03:45:13'),
+(40,	'delete_accounts',	'accounts',	'2023-12-13 03:45:13',	'2023-12-13 03:45:13');
 
 DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE `permission_role` (
@@ -327,7 +342,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (32,	1),
 (33,	1),
 (34,	1),
-(35,	1);
+(35,	1),
+(36,	1),
+(37,	1),
+(38,	1),
+(39,	1),
+(40,	1);
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
@@ -438,7 +458,17 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (25,	'menu_items',	'title',	6,	'en',	'Menu Builder',	'2023-12-13 03:28:38',	'2023-12-13 03:28:38'),
 (26,	'menu_items',	'title',	7,	'en',	'Database',	'2023-12-13 03:28:52',	'2023-12-13 03:28:52'),
 (27,	'menu_items',	'title',	10,	'en',	'Settings',	'2023-12-13 03:29:05',	'2023-12-13 03:29:05'),
-(28,	'menu_items',	'title',	13,	'en',	'Translations',	'2023-12-13 03:29:37',	'2023-12-13 03:29:37');
+(28,	'menu_items',	'title',	13,	'en',	'Translations',	'2023-12-13 03:29:37',	'2023-12-13 03:29:37'),
+(29,	'data_rows',	'display_name',	36,	'en',	'Id',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(30,	'data_rows',	'display_name',	37,	'en',	'Created At',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(31,	'data_rows',	'display_name',	38,	'en',	'Updated At',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(32,	'data_rows',	'display_name',	39,	'en',	'Title',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(33,	'data_rows',	'display_name',	40,	'en',	'Type',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(34,	'data_rows',	'display_name',	41,	'en',	'Account Data',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(35,	'data_rows',	'display_name',	42,	'en',	'Order',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(36,	'data_types',	'display_name_singular',	6,	'en',	'Account',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(37,	'data_types',	'display_name_plural',	6,	'en',	'Accounts',	'2023-12-13 03:45:47',	'2023-12-13 03:45:47'),
+(38,	'menu_items',	'title',	14,	'en',	'Accounts',	'2023-12-13 03:59:29',	'2023-12-13 03:59:29');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -474,4 +504,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-13 06:37:01
+-- 2023-12-13 07:04:55
