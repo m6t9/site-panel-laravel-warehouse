@@ -60,7 +60,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (30,	5,	'updated_at',	'timestamp',	'Обновлено',	0,	0,	0,	0,	0,	0,	'{}',	3),
 (31,	5,	'title',	'text',	'Название',	1,	1,	1,	1,	1,	1,	'{}',	4),
 (32,	5,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{}',	5),
-(33,	5,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{}',	6),
+(33,	5,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.url_browse\"}',	6),
 (34,	5,	'account',	'text',	'Аккаунт',	0,	1,	1,	1,	1,	1,	'{}',	8),
 (35,	5,	'paid_to',	'text',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	7);
 
@@ -91,7 +91,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2,	'menus',	'menus',	'Menu',	'Menus',	'voyager-list',	'TCG\\Voyager\\Models\\Menu',	NULL,	'',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (3,	'roles',	'roles',	'Role',	'Roles',	'voyager-lock',	'TCG\\Voyager\\Models\\Role',	NULL,	'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (4,	'registrars',	'registrars',	'Регистратор',	'Регистраторы',	NULL,	'App\\Models\\Registrar',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:13:15',	'2023-12-13 03:14:47'),
-(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:17:03');
+(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:22:44');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -171,17 +171,18 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1,	1,	'Dashboard',	'',	'_self',	'voyager-boat',	NULL,	NULL,	1,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.dashboard',	NULL),
-(2,	1,	'Media',	'',	'_self',	'voyager-images',	NULL,	NULL,	5,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.media.index',	NULL),
-(3,	1,	'Users',	'',	'_self',	'voyager-person',	NULL,	NULL,	3,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.users.index',	NULL),
-(4,	1,	'Roles',	'',	'_self',	'voyager-lock',	NULL,	NULL,	2,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.roles.index',	NULL),
-(5,	1,	'Tools',	'',	'_self',	'voyager-tools',	NULL,	NULL,	9,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	NULL,	NULL),
-(6,	1,	'Menu Builder',	'',	'_self',	'voyager-list',	NULL,	5,	10,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.menus.index',	NULL),
-(7,	1,	'Database',	'',	'_self',	'voyager-data',	NULL,	5,	11,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.database.index',	NULL),
-(8,	1,	'Compass',	'',	'_self',	'voyager-compass',	NULL,	5,	12,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.compass.index',	NULL),
-(9,	1,	'BREAD',	'',	'_self',	'voyager-bread',	NULL,	5,	13,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.bread.index',	NULL),
-(10,	1,	'Settings',	'',	'_self',	'voyager-settings',	NULL,	NULL,	14,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.settings.index',	NULL),
-(11,	1,	'Registrars',	'',	'_self',	NULL,	NULL,	NULL,	15,	'2023-12-13 03:13:15',	'2023-12-13 03:13:15',	'voyager.registrars.index',	NULL),
-(12,	1,	'Hostings',	'',	'_self',	NULL,	NULL,	NULL,	16,	'2023-12-13 03:16:07',	'2023-12-13 03:16:07',	'voyager.hostings.index',	NULL);
+(2,	1,	'Медиа',	'',	'_self',	'voyager-images',	'#000000',	5,	7,	'2023-12-12 16:25:10',	'2023-12-13 03:28:27',	'voyager.media.index',	'null'),
+(3,	1,	'Пользователи',	'',	'_self',	'voyager-person',	'#000000',	5,	1,	'2023-12-12 16:25:10',	'2023-12-13 03:28:05',	'voyager.users.index',	'null'),
+(4,	1,	'Роли',	'',	'_self',	'voyager-lock',	'#000000',	5,	2,	'2023-12-12 16:25:10',	'2023-12-13 03:28:15',	'voyager.roles.index',	'null'),
+(5,	1,	'Инструменты',	'',	'_self',	'voyager-tools',	'#000000',	NULL,	4,	'2023-12-12 16:25:10',	'2023-12-13 03:27:48',	NULL,	''),
+(6,	1,	'Меню',	'',	'_self',	'voyager-list',	'#000000',	5,	3,	'2023-12-12 16:25:10',	'2023-12-13 03:28:38',	'voyager.menus.index',	'null'),
+(7,	1,	'БД',	'',	'_self',	'voyager-data',	'#000000',	5,	4,	'2023-12-12 16:25:10',	'2023-12-13 03:28:52',	'voyager.database.index',	'null'),
+(8,	1,	'Compass',	'',	'_self',	'voyager-compass',	NULL,	5,	5,	'2023-12-12 16:25:10',	'2023-12-13 03:25:46',	'voyager.compass.index',	NULL),
+(9,	1,	'BREAD',	'',	'_self',	'voyager-bread',	NULL,	5,	6,	'2023-12-12 16:25:10',	'2023-12-13 03:25:46',	'voyager.bread.index',	NULL),
+(10,	1,	'Настройки',	'',	'_self',	'voyager-settings',	'#000000',	5,	8,	'2023-12-12 16:25:10',	'2023-12-13 03:29:05',	'voyager.settings.index',	'null'),
+(11,	1,	'Регистраторы',	'',	'_self',	NULL,	'#000000',	NULL,	2,	'2023-12-13 03:13:15',	'2023-12-13 03:27:10',	'voyager.registrars.index',	'null'),
+(12,	1,	'Хостинги',	'',	'_self',	NULL,	'#000000',	NULL,	3,	'2023-12-13 03:16:07',	'2023-12-13 03:27:28',	'voyager.hostings.index',	'null'),
+(13,	1,	'Переводы',	'/translations',	'_blank',	'voyager-lightbulb',	'#000000',	5,	9,	'2023-12-13 03:29:37',	'2023-12-13 03:29:43',	NULL,	'');
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -422,7 +423,17 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (15,	'data_rows',	'display_name',	34,	'en',	'Account',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
 (16,	'data_rows',	'display_name',	35,	'en',	'Paid To',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
 (17,	'data_types',	'display_name_singular',	5,	'en',	'Hosting',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
-(18,	'data_types',	'display_name_plural',	5,	'en',	'Hostings',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03');
+(18,	'data_types',	'display_name_plural',	5,	'en',	'Hostings',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(19,	'menu_items',	'title',	11,	'en',	'Registrars',	'2023-12-13 03:27:10',	'2023-12-13 03:27:10'),
+(20,	'menu_items',	'title',	12,	'en',	'Hostings',	'2023-12-13 03:27:28',	'2023-12-13 03:27:28'),
+(21,	'menu_items',	'title',	5,	'en',	'Tools',	'2023-12-13 03:27:48',	'2023-12-13 03:27:48'),
+(22,	'menu_items',	'title',	3,	'en',	'Users',	'2023-12-13 03:28:05',	'2023-12-13 03:28:05'),
+(23,	'menu_items',	'title',	4,	'en',	'Roles',	'2023-12-13 03:28:15',	'2023-12-13 03:28:15'),
+(24,	'menu_items',	'title',	2,	'en',	'Media',	'2023-12-13 03:28:26',	'2023-12-13 03:28:26'),
+(25,	'menu_items',	'title',	6,	'en',	'Menu Builder',	'2023-12-13 03:28:38',	'2023-12-13 03:28:38'),
+(26,	'menu_items',	'title',	7,	'en',	'Database',	'2023-12-13 03:28:52',	'2023-12-13 03:28:52'),
+(27,	'menu_items',	'title',	10,	'en',	'Settings',	'2023-12-13 03:29:05',	'2023-12-13 03:29:05'),
+(28,	'menu_items',	'title',	13,	'en',	'Translations',	'2023-12-13 03:29:37',	'2023-12-13 03:29:37');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -458,4 +469,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-13 06:17:58
+-- 2023-12-13 06:30:02
