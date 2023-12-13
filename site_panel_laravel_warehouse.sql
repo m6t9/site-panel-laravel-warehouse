@@ -7,9 +7,6 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-CREATE DATABASE `site_panel_laravel_warehouse` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `site_panel_laravel_warehouse`;
-
 DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE `data_rows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -51,7 +48,21 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (18,	3,	'created_at',	'timestamp',	'Created At',	0,	0,	0,	0,	0,	0,	NULL,	3),
 (19,	3,	'updated_at',	'timestamp',	'Updated At',	0,	0,	0,	0,	0,	0,	NULL,	4),
 (20,	3,	'display_name',	'text',	'Display Name',	1,	1,	1,	1,	1,	1,	NULL,	5),
-(21,	1,	'role_id',	'text',	'Role',	1,	1,	1,	1,	1,	1,	NULL,	9);
+(21,	1,	'role_id',	'text',	'Role',	1,	1,	1,	1,	1,	1,	NULL,	9),
+(22,	4,	'id',	'text',	'Id',	1,	0,	0,	0,	0,	0,	'{}',	1),
+(23,	4,	'created_at',	'timestamp',	'Создано',	0,	1,	1,	1,	0,	1,	'{}',	2),
+(24,	4,	'updated_at',	'timestamp',	'Обновлено',	0,	0,	0,	0,	0,	0,	'{}',	3),
+(25,	4,	'title',	'text',	'Название',	1,	1,	1,	1,	1,	1,	'{}',	4),
+(26,	4,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{}',	5),
+(27,	4,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{}',	6),
+(28,	5,	'id',	'text',	'Id',	1,	0,	0,	0,	0,	0,	'{}',	1),
+(29,	5,	'created_at',	'timestamp',	'Создано',	0,	1,	1,	1,	0,	1,	'{}',	2),
+(30,	5,	'updated_at',	'timestamp',	'Обновлено',	0,	0,	0,	0,	0,	0,	'{}',	3),
+(31,	5,	'title',	'text',	'Название',	1,	1,	1,	1,	1,	1,	'{}',	4),
+(32,	5,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{}',	5),
+(33,	5,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{}',	6),
+(34,	5,	'account',	'text',	'Аккаунт',	0,	1,	1,	1,	1,	1,	'{}',	8),
+(35,	5,	'paid_to',	'text',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	7);
 
 DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE `data_types` (
@@ -78,7 +89,9 @@ CREATE TABLE `data_types` (
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
 (1,	'users',	'users',	'User',	'Users',	'voyager-person',	'TCG\\Voyager\\Models\\User',	'TCG\\Voyager\\Policies\\UserPolicy',	'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (2,	'menus',	'menus',	'Menu',	'Menus',	'voyager-list',	'TCG\\Voyager\\Models\\Menu',	NULL,	'',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
-(3,	'roles',	'roles',	'Role',	'Roles',	'voyager-lock',	'TCG\\Voyager\\Models\\Role',	NULL,	'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10');
+(3,	'roles',	'roles',	'Role',	'Roles',	'voyager-lock',	'TCG\\Voyager\\Models\\Role',	NULL,	'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
+(4,	'registrars',	'registrars',	'Регистратор',	'Регистраторы',	NULL,	'App\\Models\\Registrar',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:13:15',	'2023-12-13 03:14:47'),
+(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:17:03');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -92,6 +105,35 @@ CREATE TABLE `failed_jobs` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `hostings`;
+CREATE TABLE `hostings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `account` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid_to` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hostings_paid_to_index` (`paid_to`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `ltm_translations`;
+CREATE TABLE `ltm_translations` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `locale` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `group` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `key` text COLLATE utf8mb4_bin NOT NULL,
+  `value` text COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 DROP TABLE IF EXISTS `menus`;
@@ -137,7 +179,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (7,	1,	'Database',	'',	'_self',	'voyager-data',	NULL,	5,	11,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.database.index',	NULL),
 (8,	1,	'Compass',	'',	'_self',	'voyager-compass',	NULL,	5,	12,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.compass.index',	NULL),
 (9,	1,	'BREAD',	'',	'_self',	'voyager-bread',	NULL,	5,	13,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.bread.index',	NULL),
-(10,	1,	'Settings',	'',	'_self',	'voyager-settings',	NULL,	NULL,	14,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.settings.index',	NULL);
+(10,	1,	'Settings',	'',	'_self',	'voyager-settings',	NULL,	NULL,	14,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10',	'voyager.settings.index',	NULL),
+(11,	1,	'Registrars',	'',	'_self',	NULL,	NULL,	NULL,	15,	'2023-12-13 03:13:15',	'2023-12-13 03:13:15',	'voyager.registrars.index',	NULL),
+(12,	1,	'Hostings',	'',	'_self',	NULL,	NULL,	NULL,	16,	'2023-12-13 03:16:07',	'2023-12-13 03:16:07',	'voyager.hostings.index',	NULL);
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -171,7 +215,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21,	'2018_03_14_000000_add_details_to_data_types_table',	1),
 (22,	'2018_03_16_000000_make_settings_value_nullable',	1),
 (23,	'2019_08_19_000000_create_failed_jobs_table',	1),
-(24,	'2019_12_14_000001_create_personal_access_tokens_table',	1);
+(24,	'2019_12_14_000001_create_personal_access_tokens_table',	1),
+(25,	'2014_04_02_193005_create_translations_table',	2),
+(26,	'2023_12_13_055709_create_registrars_table',	3),
+(27,	'2023_12_13_060005_create_hostings_table',	4);
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -218,7 +265,17 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (22,	'read_settings',	'settings',	'2023-12-12 16:25:11',	'2023-12-12 16:25:11'),
 (23,	'edit_settings',	'settings',	'2023-12-12 16:25:11',	'2023-12-12 16:25:11'),
 (24,	'add_settings',	'settings',	'2023-12-12 16:25:11',	'2023-12-12 16:25:11'),
-(25,	'delete_settings',	'settings',	'2023-12-12 16:25:11',	'2023-12-12 16:25:11');
+(25,	'delete_settings',	'settings',	'2023-12-12 16:25:11',	'2023-12-12 16:25:11'),
+(26,	'browse_registrars',	'registrars',	'2023-12-13 03:13:15',	'2023-12-13 03:13:15'),
+(27,	'read_registrars',	'registrars',	'2023-12-13 03:13:15',	'2023-12-13 03:13:15'),
+(28,	'edit_registrars',	'registrars',	'2023-12-13 03:13:15',	'2023-12-13 03:13:15'),
+(29,	'add_registrars',	'registrars',	'2023-12-13 03:13:15',	'2023-12-13 03:13:15'),
+(30,	'delete_registrars',	'registrars',	'2023-12-13 03:13:15',	'2023-12-13 03:13:15'),
+(31,	'browse_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
+(32,	'read_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
+(33,	'edit_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
+(34,	'add_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07'),
+(35,	'delete_hostings',	'hostings',	'2023-12-13 03:16:07',	'2023-12-13 03:16:07');
 
 DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE `permission_role` (
@@ -256,7 +313,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (22,	1),
 (23,	1),
 (24,	1),
-(25,	1);
+(25,	1),
+(26,	1),
+(27,	1),
+(28,	1),
+(29,	1),
+(30,	1),
+(31,	1),
+(32,	1),
+(33,	1),
+(34,	1),
+(35,	1);
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
@@ -272,6 +339,18 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `registrars`;
+CREATE TABLE `registrars` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
@@ -305,16 +384,11 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
-(1,	'site.title',	'Site Title',	'Site Title',	'',	'text',	1,	'Site'),
-(2,	'site.description',	'Site Description',	'Site Description',	'',	'text',	2,	'Site'),
-(3,	'site.logo',	'Site Logo',	'',	'',	'image',	3,	'Site'),
-(4,	'site.google_analytics_tracking_id',	'Google Analytics Tracking ID',	'',	'',	'text',	4,	'Site'),
 (5,	'admin.bg_image',	'Admin Background Image',	'',	'',	'image',	5,	'Admin'),
-(6,	'admin.title',	'Admin Title',	'Voyager',	'',	'text',	1,	'Admin'),
-(7,	'admin.description',	'Admin Description',	'Welcome to Voyager. The Missing Admin for Laravel',	'',	'text',	2,	'Admin'),
+(6,	'admin.title',	'Admin Title',	'SitePanel',	'',	'text',	1,	'Admin'),
+(7,	'admin.description',	'Admin Description',	'Welcome to SitePanel',	'',	'text',	2,	'Admin'),
 (8,	'admin.loader',	'Admin Loader',	'',	'',	'image',	3,	'Admin'),
-(9,	'admin.icon_image',	'Admin Icon Image',	'',	'',	'image',	4,	'Admin'),
-(10,	'admin.google_analytics_client_id',	'Google Analytics Client ID (used for admin dashboard)',	'',	'',	'text',	1,	'Admin');
+(9,	'admin.icon_image',	'Admin Icon Image',	'',	'',	'image',	4,	'Admin');
 
 DROP TABLE IF EXISTS `translations`;
 CREATE TABLE `translations` (
@@ -330,6 +404,25 @@ CREATE TABLE `translations` (
   UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `locale`, `value`, `created_at`, `updated_at`) VALUES
+(1,	'data_rows',	'display_name',	22,	'en',	'Id',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(2,	'data_rows',	'display_name',	23,	'en',	'Created At',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(3,	'data_rows',	'display_name',	24,	'en',	'Updated At',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(4,	'data_rows',	'display_name',	25,	'en',	'Title',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(5,	'data_rows',	'display_name',	26,	'en',	'Info',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(6,	'data_rows',	'display_name',	27,	'en',	'Url',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(7,	'data_types',	'display_name_singular',	4,	'en',	'Registrar',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(8,	'data_types',	'display_name_plural',	4,	'en',	'Registrars',	'2023-12-13 03:13:57',	'2023-12-13 03:13:57'),
+(9,	'data_rows',	'display_name',	28,	'en',	'Id',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(10,	'data_rows',	'display_name',	29,	'en',	'Created At',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(11,	'data_rows',	'display_name',	30,	'en',	'Updated At',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(12,	'data_rows',	'display_name',	31,	'en',	'Title',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(13,	'data_rows',	'display_name',	32,	'en',	'Info',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(14,	'data_rows',	'display_name',	33,	'en',	'Url',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(15,	'data_rows',	'display_name',	34,	'en',	'Account',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(16,	'data_rows',	'display_name',	35,	'en',	'Paid To',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(17,	'data_types',	'display_name_singular',	5,	'en',	'Hosting',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03'),
+(18,	'data_types',	'display_name_plural',	5,	'en',	'Hostings',	'2023-12-13 03:17:03',	'2023-12-13 03:17:03');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -351,7 +444,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1,	1,	'admin',	'admin@test.com',	'users/default.png',	NULL,	'$2y$10$JrDyrpbwtMEDtpKHY.NWneullCFix91S92lVZPHaBxJCa3FZWW59C',	NULL,	NULL,	'2023-12-12 16:26:04',	'2023-12-12 16:26:04');
+(1,	1,	'admin',	'admin@test.com',	'users/default.png',	NULL,	'$2y$10$JrDyrpbwtMEDtpKHY.NWneullCFix91S92lVZPHaBxJCa3FZWW59C',	NULL,	'{\"locale\":\"ru\"}',	'2023-12-12 16:26:04',	'2023-12-13 03:07:12');
 
 DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE `user_roles` (
@@ -365,4 +458,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-12 19:28:06
+-- 2023-12-13 06:17:58
