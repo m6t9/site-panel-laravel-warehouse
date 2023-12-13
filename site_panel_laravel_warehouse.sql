@@ -7,6 +7,23 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE `accounts` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `account_data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `accounts` (`id`, `created_at`, `updated_at`, `title`, `type`, `account_data`, `order`) VALUES
+(1,	'2023-12-13 04:00:14',	'2023-12-13 04:00:14',	'LiveInternet',	'li',	NULL,	30),
+(2,	'2023-12-13 04:01:32',	'2023-12-13 04:01:32',	'Yandex Webmaster Tst1',	'yandex_webmaster',	'{\"client_id\":\"tst_ClientID\",\"client_secret\":\"tst_secret\",\"token\":\"tst_Token\",\"expiry_date\":\"2025-12-05\"}',	10),
+(3,	'2023-12-13 04:02:26',	'2023-12-13 04:02:26',	'Yandex Metrika Tst',	'yandex_metrika',	'{\"client_id\":\"tst_ClientID\",\"client_secret\":\"tst_secret\",\"token\":\"tst_Token\",\"expiry_date\":\"2026-12-06\"}',	20);
+
 DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE `data_rows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -504,4 +521,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-13 07:04:55
+-- 2023-12-13 16:38:28
