@@ -61,8 +61,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (31,	5,	'title',	'text',	'Название',	1,	1,	1,	1,	1,	1,	'{}',	4),
 (32,	5,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{}',	5),
 (33,	5,	'url',	'text',	'Ссылка',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.url_browse\"}',	6),
-(34,	5,	'account',	'text',	'Аккаунт',	0,	1,	1,	1,	1,	1,	'{}',	8),
-(35,	5,	'paid_to',	'text',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	7);
+(34,	5,	'account',	'text',	'Аккаунт',	0,	1,	1,	1,	1,	1,	'{}',	7),
+(35,	5,	'paid_to',	'date',	'Оплачен до',	0,	1,	1,	1,	1,	1,	'{}',	8);
 
 DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE `data_types` (
@@ -91,7 +91,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2,	'menus',	'menus',	'Menu',	'Menus',	'voyager-list',	'TCG\\Voyager\\Models\\Menu',	NULL,	'',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (3,	'roles',	'roles',	'Role',	'Roles',	'voyager-lock',	'TCG\\Voyager\\Models\\Role',	NULL,	'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',	'',	1,	0,	NULL,	'2023-12-12 16:25:10',	'2023-12-12 16:25:10'),
 (4,	'registrars',	'registrars',	'Регистратор',	'Регистраторы',	NULL,	'App\\Models\\Registrar',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:13:15',	'2023-12-13 03:14:47'),
-(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:22:44');
+(5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:35:03');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -121,6 +121,9 @@ CREATE TABLE `hostings` (
   KEY `hostings_paid_to_index` (`paid_to`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `hostings` (`id`, `created_at`, `updated_at`, `title`, `info`, `url`, `account`, `paid_to`) VALUES
+(1,	'2023-12-13 03:35:41',	'2023-12-13 03:35:41',	'Reg.ru',	NULL,	NULL,	'tst_acc',	'2027-11-01'),
+(2,	'2023-12-13 03:36:00',	'2023-12-13 03:36:23',	'Reg.ru',	NULL,	'//Reg.ru',	'tst2',	'2028-04-01');
 
 DROP TABLE IF EXISTS `ltm_translations`;
 CREATE TABLE `ltm_translations` (
@@ -354,6 +357,8 @@ CREATE TABLE `registrars` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `registrars` (`id`, `created_at`, `updated_at`, `title`, `info`, `url`) VALUES
+(1,	'2023-12-13 03:33:23',	'2023-12-13 03:33:23',	'reg.ru',	NULL,	'https://www.reg.ru/');
 
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
@@ -469,4 +474,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-13 06:30:02
+-- 2023-12-13 06:37:01
