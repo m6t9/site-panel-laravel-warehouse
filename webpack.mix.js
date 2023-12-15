@@ -18,3 +18,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/account_data_edit.js', 'public/js')
     .vue();
+
+mix.js('resources/js/domain_accounts_data_edit.js', 'public/js')
+    .vue();

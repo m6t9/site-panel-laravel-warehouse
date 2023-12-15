@@ -194,6 +194,11 @@ return [
     'additional_js' => [
         //'js/custom.js',
         'js/account_data_edit.js',
+        'js/domain_accounts_data_edit.js',
+        'Highcharts-11.2.0/code/highcharts.js',
+        'Highcharts-11.2.0/code/modules/exporting.js',
+        'Highcharts-11.2.0/code/modules/export-data.js',
+        'Highcharts-11.2.0/code/modules/accessibility.js',
     ],
 
     'googlemaps' => [

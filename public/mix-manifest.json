@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/account_data_edit.js": "/js/account_data_edit.js",
+    "/js/domain_accounts_data_edit.js": "/js/domain_accounts_data_edit.js",
     "/css/app.css": "/css/app.css"
 }
