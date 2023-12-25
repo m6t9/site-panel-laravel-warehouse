@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcebddff7a862ac8b284e8f047860171",
+    "content-hash": "ea9cb5a0b0f06e0204309296f2fcf7b6",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -129,6 +129,57 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.2.0"
             },
             "time": "2023-11-14T13:51:46+00:00"
+        },
+        {
+            "name": "axp-dev/ya-metrika",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axp-dev/ya-metrika.git",
+                "reference": "ef396ba9aee361551bfa3d0d644564e35f698137"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axp-dev/ya-metrika/zipball/ef396ba9aee361551bfa3d0d644564e35f698137",
+                "reference": "ef396ba9aee361551bfa3d0d644564e35f698137",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4.3",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "^2.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AXP\\YaMetrika\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pushkarev",
+                    "email": "axp-dev@yandex.com",
+                    "homepage": "https://github.com/axp-dev"
+                }
+            ],
+            "description": "Yandex Metrika API Library",
+            "homepage": "https://github.com/axp-dev/ya-metrika",
+            "keywords": [
+                "api",
+                "metrika",
+                "yandex"
+            ],
+            "support": {
+                "issues": "https://github.com/axp-dev/ya-metrika/issues",
+                "source": "https://github.com/axp-dev/ya-metrika/tree/2.2.0"
+            },
+            "time": "2022-07-30T14:55:45+00:00"
         },
         {
             "name": "barryvdh/laravel-translation-manager",
