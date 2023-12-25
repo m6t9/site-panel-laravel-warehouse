@@ -37,4 +37,12 @@ class Account extends Model
         return $arr;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function domains()
+    {
+        return $this->belongsToMany(Domain::class, 'domain_accounts');
+    }
+
 }
