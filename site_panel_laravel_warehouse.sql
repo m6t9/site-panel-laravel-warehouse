@@ -105,7 +105,16 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (58,	7,	'accounts_data',	'text',	'Данные аккаунтов',	0,	0,	1,	1,	1,	1,	'{\"view_add\":\"formfields.domain_accounts_data_edit\",\"view_edit\":\"formfields.domain_accounts_data_edit\"}',	18),
 (59,	7,	'info',	'text',	'Информация',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.domain_info_browse\"}',	19),
 (60,	7,	'domain_belongsto_registrar_relationship',	'relationship',	'Регистратор',	0,	1,	1,	1,	1,	1,	'{\"model\":\"App\\\\Models\\\\Registrar\",\"table\":\"registrars\",\"type\":\"belongsTo\",\"column\":\"registrar_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"accounts\",\"pivot\":\"0\",\"taggable\":\"0\"}',	9),
-(61,	7,	'domain_belongstomany_account_relationship',	'relationship',	'Аккаунты',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.accounts_browse\",\"model\":\"App\\\\Models\\\\Account\",\"table\":\"accounts\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"domain_accounts\",\"pivot\":\"1\",\"taggable\":\"on\"}',	17);
+(61,	7,	'domain_belongstomany_account_relationship',	'relationship',	'Аккаунты',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.accounts_browse\",\"model\":\"App\\\\Models\\\\Account\",\"table\":\"accounts\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"domain_accounts\",\"pivot\":\"1\",\"taggable\":\"on\"}',	17),
+(62,	8,	'id',	'text',	'Id',	1,	0,	0,	0,	0,	0,	'{}',	1),
+(63,	8,	'created_at',	'timestamp',	'Создано',	0,	0,	1,	0,	0,	1,	'{}',	2),
+(64,	8,	'updated_at',	'timestamp',	'Обновлено',	0,	0,	0,	0,	0,	0,	'{}',	3),
+(65,	8,	'name',	'text',	'Имя',	1,	1,	1,	1,	1,	1,	'{}',	4),
+(66,	8,	'title',	'text',	'Название',	0,	0,	1,	1,	1,	1,	'{}',	5),
+(67,	8,	'tooltip',	'text',	'Подсказка',	0,	0,	1,	1,	1,	1,	'{}',	6),
+(68,	8,	'ico',	'awesome_icon',	'Иконка',	0,	0,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.awesome_icon_view_browse\"}',	7),
+(69,	8,	'color',	'color_class',	'Стиль',	0,	1,	1,	1,	1,	1,	'{\"view_browse\":\"formfields.color_class_view_browse\"}',	8),
+(70,	7,	'domain_belongstomany_tag_relationship',	'relationship',	'Метки',	0,	1,	1,	1,	1,	0,	'{\"view_browse\":\"formfields.tags_browse\",\"model\":\"App\\\\Models\\\\Tag\",\"table\":\"tags\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"domain_tag\",\"pivot\":\"1\",\"taggable\":\"on\"}',	20);
 
 DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE `data_types` (
@@ -136,7 +145,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (4,	'registrars',	'registrars',	'Регистратор',	'Регистраторы',	NULL,	'App\\Models\\Registrar',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:13:15',	'2023-12-13 03:14:47'),
 (5,	'hostings',	'hostings',	'Хостинг',	'Хостинги',	NULL,	'App\\Models\\Hosting',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:16:07',	'2023-12-13 03:35:03'),
 (6,	'accounts',	'accounts',	'Account',	'Accounts',	NULL,	'App\\Models\\Account',	NULL,	NULL,	NULL,	1,	0,	'{\"order_column\":\"order\",\"order_display_column\":\"order\",\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2023-12-13 03:45:13',	'2023-12-13 03:45:47'),
-(7,	'domains',	'domains',	'Домен',	'Домены',	NULL,	'App\\Models\\Domain',	NULL,	NULL,	NULL,	1,	1,	'{\"order_column\":\"expired\",\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":\"domain\",\"scope\":null}',	'2023-12-15 02:49:38',	'2023-12-15 03:16:03');
+(7,	'domains',	'domains',	'Домен',	'Домены',	NULL,	'App\\Models\\Domain',	NULL,	NULL,	NULL,	1,	1,	'{\"order_column\":\"expired\",\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":\"domain\",\"scope\":null}',	'2023-12-15 02:49:38',	'2024-02-02 11:04:25'),
+(8,	'tags',	'tags',	'Метка',	'Метки',	NULL,	'App\\Models\\Tag',	NULL,	NULL,	NULL,	1,	1,	'{\"order_column\":\"name\",\"order_display_column\":\"name\",\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}',	'2024-02-02 10:39:41',	'2024-02-02 10:51:00');
 
 DROP TABLE IF EXISTS `domains`;
 CREATE TABLE `domains` (
@@ -166,7 +176,7 @@ CREATE TABLE `domains` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `domains` (`id`, `created_at`, `updated_at`, `domain`, `expired`, `domain_created`, `whois`, `registrar_id`, `hosting_id`, `traffic`, `traffic_info`, `index_yandex`, `index_yandex_info`, `yandex_x`, `yandex_x_info`, `accounts_data`, `info`) VALUES
-(1,	'2023-12-15 03:09:34',	'2023-12-15 03:09:34',	'google.ru',	NULL,	'1980-01-01',	NULL,	1,	1,	0,	NULL,	0,	NULL,	10000,	NULL,	'{\"yandex_metrika_counter_id\":\"xxx\"}',	NULL),
+(1,	'2023-12-15 03:09:34',	'2024-02-02 11:04:38',	'google.ru',	NULL,	'1980-01-01',	NULL,	1,	1,	0,	NULL,	0,	NULL,	10000,	NULL,	'{\"yandex_metrika_counter_id\":\"xxx\"}',	NULL),
 (2,	'2023-12-15 03:11:52',	'2023-12-15 03:11:52',	'habr.com',	NULL,	'2000-01-10',	NULL,	1,	2,	0,	NULL,	0,	NULL,	5000,	NULL,	NULL,	NULL),
 (3,	'2023-12-15 03:12:32',	'2023-12-15 03:12:32',	'mail.ru',	NULL,	'1990-10-15',	NULL,	1,	1,	0,	NULL,	0,	NULL,	8000,	NULL,	NULL,	NULL),
 (4,	'2023-12-15 03:13:10',	'2023-12-15 03:13:10',	'yandex.ru',	NULL,	'1990-02-10',	NULL,	NULL,	2,	0,	NULL,	0,	NULL,	10000,	NULL,	'{\"yandex_metrika_counter_id\":\"yyy\"}',	NULL);
@@ -190,6 +200,21 @@ INSERT INTO `domain_accounts` (`id`, `domain_id`, `account_id`, `order`) VALUES
 (3,	1,	3,	0),
 (4,	2,	1,	0),
 (5,	4,	3,	0);
+
+DROP TABLE IF EXISTS `domain_tag`;
+CREATE TABLE `domain_tag` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `domain_id` bigint(20) unsigned NOT NULL,
+  `tag_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `domain_tags_domain_id_foreign` (`domain_id`),
+  KEY `domain_tags_tag_id_foreign` (`tag_id`),
+  CONSTRAINT `domain_tags_domain_id_foreign` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`id`),
+  CONSTRAINT `domain_tags_tag_id_foreign` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `domain_tag` (`id`, `domain_id`, `tag_id`) VALUES
+(1,	1,	1);
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -275,7 +300,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (2,	1,	'Медиа',	'',	'_self',	'voyager-images',	'#000000',	5,	7,	'2023-12-12 16:25:10',	'2023-12-13 03:28:27',	'voyager.media.index',	'null'),
 (3,	1,	'Пользователи',	'',	'_self',	'voyager-person',	'#000000',	5,	1,	'2023-12-12 16:25:10',	'2023-12-13 03:28:05',	'voyager.users.index',	'null'),
 (4,	1,	'Роли',	'',	'_self',	'voyager-lock',	'#000000',	5,	2,	'2023-12-12 16:25:10',	'2023-12-13 03:28:15',	'voyager.roles.index',	'null'),
-(5,	1,	'Инструменты',	'',	'_self',	'voyager-tools',	'#000000',	NULL,	6,	'2023-12-12 16:25:10',	'2023-12-15 03:05:42',	NULL,	''),
+(5,	1,	'Инструменты',	'',	'_self',	'voyager-tools',	'#000000',	NULL,	7,	'2023-12-12 16:25:10',	'2024-02-02 10:47:52',	NULL,	''),
 (6,	1,	'Меню',	'',	'_self',	'voyager-list',	'#000000',	5,	3,	'2023-12-12 16:25:10',	'2023-12-13 03:28:38',	'voyager.menus.index',	'null'),
 (7,	1,	'БД',	'',	'_self',	'voyager-data',	'#000000',	5,	4,	'2023-12-12 16:25:10',	'2023-12-13 03:28:52',	'voyager.database.index',	'null'),
 (8,	1,	'Compass',	'',	'_self',	'voyager-compass',	NULL,	5,	5,	'2023-12-12 16:25:10',	'2023-12-13 03:25:46',	'voyager.compass.index',	NULL),
@@ -284,8 +309,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (11,	1,	'Регистраторы',	'',	'_self',	NULL,	'#000000',	NULL,	3,	'2023-12-13 03:13:15',	'2023-12-15 03:05:47',	'voyager.registrars.index',	'null'),
 (12,	1,	'Хостинги',	'',	'_self',	NULL,	'#000000',	NULL,	4,	'2023-12-13 03:16:07',	'2023-12-15 03:05:45',	'voyager.hostings.index',	'null'),
 (13,	1,	'Переводы',	'/translations',	'_blank',	'voyager-lightbulb',	'#000000',	5,	9,	'2023-12-13 03:29:37',	'2023-12-13 03:29:43',	NULL,	''),
-(14,	1,	'Аккаунты',	'',	'_self',	NULL,	'#000000',	NULL,	5,	'2023-12-13 03:45:13',	'2023-12-15 03:05:45',	'voyager.accounts.index',	'null'),
-(15,	1,	'Домены',	'',	'_self',	NULL,	'#000000',	NULL,	2,	'2023-12-15 02:49:38',	'2023-12-15 03:05:47',	'voyager.domains.index',	'null');
+(14,	1,	'Аккаунты',	'',	'_self',	NULL,	'#000000',	NULL,	6,	'2023-12-13 03:45:13',	'2024-02-02 10:47:55',	'voyager.accounts.index',	'null'),
+(15,	1,	'Домены',	'',	'_self',	NULL,	'#000000',	NULL,	2,	'2023-12-15 02:49:38',	'2023-12-15 03:05:47',	'voyager.domains.index',	'null'),
+(16,	1,	'Метки',	'',	'_self',	NULL,	'#000000',	NULL,	5,	'2024-02-02 10:39:42',	'2024-02-02 10:51:30',	'voyager.tags.index',	'null');
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -325,7 +351,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27,	'2023_12_13_060005_create_hostings_table',	4),
 (28,	'2023_12_13_063941_create_accounts_table',	5),
 (29,	'2023_12_15_053727_create_domains_table',	6),
-(30,	'2023_12_15_055448_create_domain_accounts_table',	7);
+(30,	'2023_12_15_055448_create_domain_accounts_table',	7),
+(31,	'2024_02_02_131557_create_tags_table',	8),
+(32,	'2024_02_02_131727_create_domain_tags_table',	8);
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -392,7 +420,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (42,	'read_domains',	'domains',	'2023-12-15 02:49:38',	'2023-12-15 02:49:38'),
 (43,	'edit_domains',	'domains',	'2023-12-15 02:49:38',	'2023-12-15 02:49:38'),
 (44,	'add_domains',	'domains',	'2023-12-15 02:49:38',	'2023-12-15 02:49:38'),
-(45,	'delete_domains',	'domains',	'2023-12-15 02:49:38',	'2023-12-15 02:49:38');
+(45,	'delete_domains',	'domains',	'2023-12-15 02:49:38',	'2023-12-15 02:49:38'),
+(46,	'browse_tags',	'tags',	'2024-02-02 10:39:42',	'2024-02-02 10:39:42'),
+(47,	'read_tags',	'tags',	'2024-02-02 10:39:42',	'2024-02-02 10:39:42'),
+(48,	'edit_tags',	'tags',	'2024-02-02 10:39:42',	'2024-02-02 10:39:42'),
+(49,	'add_tags',	'tags',	'2024-02-02 10:39:42',	'2024-02-02 10:39:42'),
+(50,	'delete_tags',	'tags',	'2024-02-02 10:39:42',	'2024-02-02 10:39:42');
 
 DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE `permission_role` (
@@ -450,7 +483,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (42,	1),
 (43,	1),
 (44,	1),
-(45,	1);
+(45,	1),
+(46,	1),
+(47,	1),
+(48,	1),
+(49,	1),
+(50,	1);
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
@@ -518,6 +556,23 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (7,	'admin.description',	'Admin Description',	'Welcome to SitePanel',	'',	'text',	2,	'Admin'),
 (8,	'admin.loader',	'Admin Loader',	'',	'',	'image',	3,	'Admin'),
 (9,	'admin.icon_image',	'Admin Icon Image',	'',	'',	'image',	4,	'Admin');
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `tooltip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ico` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `title`, `tooltip`, `ico`, `color`) VALUES
+(1,	'2024-02-02 10:59:28',	'2024-02-02 10:59:28',	'AdSense',	'AdSense',	NULL,	NULL,	'label bg-blue'),
+(2,	'2024-02-02 11:00:22',	'2024-02-02 11:00:22',	'На обслуживании',	'На обслуж.',	'На обслуживании',	NULL,	'label bg-fuchsia-active');
 
 DROP TABLE IF EXISTS `translations`;
 CREATE TABLE `translations` (
@@ -593,7 +648,19 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (57,	'data_types',	'display_name_plural',	7,	'en',	'Domains',	'2023-12-15 02:52:08',	'2023-12-15 02:52:08'),
 (58,	'data_rows',	'display_name',	60,	'en',	'registrars',	'2023-12-15 02:53:45',	'2023-12-15 02:53:45'),
 (59,	'data_rows',	'display_name',	61,	'en',	'accounts',	'2023-12-15 02:57:28',	'2023-12-15 02:57:28'),
-(60,	'menu_items',	'title',	15,	'en',	'Domains',	'2023-12-15 03:05:35',	'2023-12-15 03:05:35');
+(60,	'menu_items',	'title',	15,	'en',	'Domains',	'2023-12-15 03:05:35',	'2023-12-15 03:05:35'),
+(61,	'data_rows',	'display_name',	62,	'en',	'Id',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(62,	'data_rows',	'display_name',	63,	'en',	'Created At',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(63,	'data_rows',	'display_name',	64,	'en',	'Updated At',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(64,	'data_rows',	'display_name',	65,	'en',	'Name',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(65,	'data_rows',	'display_name',	66,	'en',	'Title',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(66,	'data_rows',	'display_name',	67,	'en',	'Tooltip',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(67,	'data_rows',	'display_name',	68,	'en',	'Ico',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(68,	'data_rows',	'display_name',	69,	'en',	'Style',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(69,	'data_types',	'display_name_singular',	8,	'en',	'Tag',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(70,	'data_types',	'display_name_plural',	8,	'en',	'Tags',	'2024-02-02 10:43:35',	'2024-02-02 10:43:35'),
+(71,	'data_rows',	'display_name',	70,	'en',	'tags',	'2024-02-02 10:47:16',	'2024-02-02 10:47:16'),
+(72,	'menu_items',	'title',	16,	'en',	'Tags',	'2024-02-02 10:51:30',	'2024-02-02 10:51:30');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -629,4 +696,4 @@ CREATE TABLE `user_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-12-15 06:27:46
+-- 2024-02-02 14:04:59
