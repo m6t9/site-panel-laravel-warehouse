@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use TCG\Voyager\Facades\Voyager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Voyager::addFormField(\App\Voyager\FormFields\AwesomeIconField::class);
+        Voyager::addFormField(\App\Voyager\FormFields\ColorClassField::class);
     }
 
     /**
