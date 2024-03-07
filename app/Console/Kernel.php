@@ -17,6 +17,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('accounts_data:get')->dailyAt('04:00')->withoutOverlapping(30);
 
+        $schedule->command('whois:crawler')->dailyAt('05:00')->withoutOverlapping(30);
+
+        $schedule->command('make:history')->dailyAt('05:50')->withoutOverlapping(30);
+
+        $schedule->command('cleaner')->dailyAt('06:00')->withoutOverlapping(30);
+
     }
 
     /**
