@@ -114,6 +114,28 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'command_accounts_data' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/command_accounts_data.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+        'command_whois_crawler' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/command_whois_crawler.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+
+        'command_check_domains' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/command_check_domains.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+
+
     ],
 
 ];
