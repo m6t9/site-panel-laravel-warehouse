@@ -27,7 +27,7 @@ class AccountsData extends Command
      *
      * @var string
      */
-    protected $description = 'Сбор информации о трафике';
+    protected $description = 'Сбор информации о трафике, индексе и ИКС Яндекса';
 
     /**
      * Execute the console command.
