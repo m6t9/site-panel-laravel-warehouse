@@ -12,3 +12,4 @@
 
 Панель сделана на Laravel, что позволяет быстро разобраться в коде и доработать ее под свои требования.
 
+![screen](https://github.com/m6t9/site-panel-laravel-warehouse/assets/24699342/097ddd41-0ca7-4509-9428-ba3651f71b2d)
